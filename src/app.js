@@ -8,10 +8,11 @@ const app = express();
 //configuration of cors
 // app.use(cors()) = it is for normal
 //But in production level
-app.use(cors({
-    origin:process.env.CORS_ORIGIN, //option
-    credentials:true
-}))
+// app.use(cors({
+//     origin:process.env.CORS_ORIGIN, //option
+//     credentials:true
+// }))
+
 
 
 app.use(express.json({limit:"16kb"}))//json data accept
@@ -41,4 +42,13 @@ After all middleewares it is discarded
 
 
 
+//routes import
+import userRouter from './routes/user.routes.js';
+
+//routes declaration
+//app.get = in previous but
+app.use("/api/v1/users", userRouter); //standard process =api/v1/users
+/*when user type /users then contol goes to userRouter
+http://localhost:8000/api/v1/users/
+*/
 export { app }
