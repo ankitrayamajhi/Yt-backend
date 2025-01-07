@@ -73,7 +73,7 @@ userSchema.pre("save", async function (next)
         // }
         if (!this.markModified("password")) return next();//negetive check
             
-        thi.password = bcrypt.hash(this.password,10)
+        this.password = await bcrypt.hash(this.password,10)
     
     } 
 ) 
