@@ -6,9 +6,9 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 //To throw error we need apiError
 import {ApiError} from "../utils/ApiError.js"
 //check if user already exists
-import {User} from "../models/user.models.js"
+import {User} from "../models/user.model.js"
 //To upload clodinary
-import {uploadCloudinary} from "../utils/cloudinary.js"
+import {uploadOnCloudinary} from "../utils/cloudinary.js"
 //to return response
 import {ApiResponse} from "../utils/ApiResponse.js"
 const registerUser = asyncHandler(async(req,res) => {
@@ -57,8 +57,8 @@ if (!avatarLocalPath) {
     throw new ApiError(400,"Avatar file is required!")
 }
 //5
-const avatar = await uploadCloudinary(avatarLocalPath)
-const coverImage = await uploadCloudinary(coverImageLocalPath)
+const avatar = await uploadOnCloudinary(avatarLocalPath)
+const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
 if (!avatar) {
     throw new ApiError(400,"Avatar file i required!")

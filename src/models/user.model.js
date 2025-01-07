@@ -90,7 +90,7 @@ userSchema.methods.isPasswordCorrect = async function
 }
 
 
-export const User = mangoose.model("User",userSchema)
+export const User = mongoose.model("User",userSchema)
 
 userSchema.methods.generateAccessToken = function()
 {

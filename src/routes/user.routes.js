@@ -1,7 +1,7 @@
 import {Router} from "express";
 import { registerUser } from "../controllers/user.controller.js";
 //To upload file like avtar ,cover image
-import { upload } from "../middleewares/multer.middleware.js";
+import { upload } from "../middlewares/multer.middleware.js";
 const router = Router()
 
 //when control come from  app.js = /users
