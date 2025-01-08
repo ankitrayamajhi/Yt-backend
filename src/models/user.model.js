@@ -71,9 +71,10 @@ userSchema.pre("save", async function (next)
         //     this.password = bcrypt.hash(this.password,8)//8 = hash round 
         //      next()
         // }
-        if (!this.markModified("password")) return next();//negetive check
+        if (!this.isModified("password")) return next();//negetive check
             
         this.password = await bcrypt.hash(this.password,10)
+        next()
     
     } 
 ) 
@@ -90,7 +91,6 @@ userSchema.methods.isPasswordCorrect = async function
 }
 
 
-export const User = mongoose.model("User",userSchema)
 
 userSchema.methods.generateAccessToken = function()
 {
@@ -127,7 +127,7 @@ userSchema.methods.generateRefreshToken = function()
     )
 }
 
-
+export const User = mongoose.model("User",userSchema)
 
 /*
  npm i bcrypt = A library to help you hash password
