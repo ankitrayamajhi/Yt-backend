@@ -276,12 +276,12 @@ const changeCurrentUserPassword = asyncHandler(async(req,res) =>{
         throw new ApiError(400,"Invalid old password")
     }
     user.password = newPassword
-    await user.save{validateBeforeSave:false}
+    await user.save({validateBeforeSave:false})
     return res
     .status(200)
-    .json(200,
+    .json(new ApiResponse(200,
         {},
-        "Password changed Sucessfully")
+        "Password changed Sucessfully"))
     // const {oldPassword,newPassword,confPassword} = req.body
     // if (!(newPassword === confPassword)) {
     //     throw new ApiError(400,"newPassword & confPassword is not same"
@@ -304,17 +304,17 @@ const changeCurrentUserPassword = asyncHandler(async(req,res) =>{
 const getCurrentUser = asyncHandler(async(req,res) =>{
     return res
     .status(200)
-    .json(200,req,user."Current user fetched sucesfully")
+    .json(200,req.user,"Current user fetched sucesfully")
 })
 
 const updateAccountDetails = asyncHandler(async(req,res) =>{
-    const{fullName,eamil} = req.body
+    const{fullName,email} = req.body
 
     if (!fullName || email) {
         throw new ApiError(400,"All fields are required!")
     }
 
-   const user = User.findByIdAndUpdate(
+   const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set:{
@@ -374,7 +374,7 @@ const updateUserCoverImage = asyncHandler(async(req,res) =>{
         req.user?._id,
         {
             $set:{
-                coverImage = coverImage.url
+                coverImage: coverImage.url
             }
         },
         {new: true}
