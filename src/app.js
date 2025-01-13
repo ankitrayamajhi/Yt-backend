@@ -51,4 +51,29 @@ app.use("/api/v1/users", userRouter); //standard process =api/v1/users
 /*when user type /users then contol goes to userRouter
 http://localhost:8000/api/v1/users/
 */
+app.use("/api/v1/videos", userRouter); //standard process =api/v1/users
+/*when user type /videos then contol goes to userRouter
+http://localhost:8000/api/v1/videos/
+*/
+
+app.use("/api/v1/comments", userRouter); //standard process =api/v1/users
+/*when user type /comments then contol goes to userRouter
+http://localhost:8000/api/v1/comments/
+*/
+
+app.use("/api/v1/likes", userRouter); //standard process =api/v1/users
+/*when user type /likes then contol goes to userRouter
+http://localhost:8000/api/v1/likes/
+*/
+
+app.use("/api/v1/playlists", userRouter); //standard process =api/v1/users
+/*when user type /playlists then contol goes to userRouter
+http://localhost:8000/api/v1/playlists/
+*/
+
+app.use("/api/v1/tweets", userRouter); //standard process =api/v1/users
+/*when user type /tweets then contol goes to userRouter
+http://localhost:8000/api/v1/tweets/
+*/
+
 export { app }
