@@ -76,4 +76,16 @@ app.use("/api/v1/tweets", userRouter); //standard process =api/v1/users
 http://localhost:8000/api/v1/tweets/
 */
 
+app.use("/api/v1/subscriptions", userRouter); //standard process =api/v1/users
+/*when user type /subscriptions then contol goes to userRouter
+http://localhost:8000/api/v1/subscriptions/
+*/ 
+app.use("/api/v1/likes", userRouter); //standard process =api/v1/users
+/*when user type /likes then contol goes to userRouter
+http://localhost:8000/api/v1/likes/ 
+*/
+
+app.use("/api/v1/dashboard", userRouter); //standard process =api/v1/users
+
+app.us
 export { app }
